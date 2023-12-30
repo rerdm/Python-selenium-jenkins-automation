@@ -20,10 +20,9 @@ def test_negative_zahlen():
     ergebnis = addiere_zahlen(zahl1, zahl2)
     assert ergebnis == erwartetes_ergebnis, f"Fehler: {zahl1} + {zahl2} sollte {erwartetes_ergebnis} ergeben, aber es ergibt {ergebnis}"
 
-@pytest.mark.gemischt
 def test_gemischte_zahlen():
     zahl1 = 8
-    zahl2 = -3
+    zahl2 = -4
     erwartetes_ergebnis = 5
 
     ergebnis = addiere_zahlen(zahl1, zahl2)
