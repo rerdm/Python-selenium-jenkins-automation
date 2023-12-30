@@ -2,8 +2,8 @@ import pytest
 
 from Klassen.InitialisiereWebdriverSetzeZoomLevel import InitialisiereWebdriverSetzeZoomLevel
 
-
 @pytest.fixture
+
 def driver():
 
     webdriver_initialisieren = InitialisiereWebdriverSetzeZoomLevel()
@@ -12,7 +12,7 @@ def driver():
     yield driver_instance
     driver_instance.quit()
 
-
+@pytest.mark.login
 def test_open_and_check_url(driver):
 
     expected_url = "https://test.id.bund.de/de"
@@ -21,5 +21,3 @@ def test_open_and_check_url(driver):
     assert actual_url == expected_url, f"Expected URL: {expected_url}, Actual URL: {actual_url}"
 
 
-if __name__ == "__main__":
-    pytest.main([__file__])
