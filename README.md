@@ -43,7 +43,10 @@ Example
 
 3. Now you can build the Programm and see the output in the console log from jenkins
 
-########################################################################################################################
+<b>------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</b>
+
+
+
 
 # Python-jenkins-automation with Pytest Integration and generating HTML Report (Pipeline Script/Public Repo)
 
