@@ -12,7 +12,7 @@ def test_positive_numbers():
     result = add_numbers(number1, number2)
     assert result == expected_result, f"Failure: {number1} + {number2} should be {expected_result} but the actual result shows {result}"
 
-def test_negative_zahlen():
+def test_negative_numbers():
     number1 = -3
     number2 = -7
     expected_result = -10
@@ -20,7 +20,7 @@ def test_negative_zahlen():
     result = add_numbers(number1, number2)
     assert result == expected_result, f"Failure: {number1} + {number2} should be {expected_result} but the actual result shows {result}"
 
-def test_gemischte_zahlen():
+def test_gemischte_numbers():
     number1 = 8
     number2 = -4
     expected_result = 5
