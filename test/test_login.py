@@ -1,9 +1,12 @@
+import sys
 import pytest
 
-from Klassen.InitialisiereWebdriverSetzeZoomLevel import InitialisiereWebdriverSetzeZoomLevel
+sys.path.append("C:/Users/renee/Desktop/PublicDocuments/7. Programming/Python-selenium-jenkins-automation")
+
+from classes.InitialisiereWebdriverSetzeZoomLevel import InitialisiereWebdriverSetzeZoomLevel
+
 
 @pytest.fixture
-
 def driver():
 
     webdriver_initialisieren = InitialisiereWebdriverSetzeZoomLevel()
@@ -12,7 +15,6 @@ def driver():
     yield driver_instance
     driver_instance.quit()
 
-@pytest.mark.login
 def test_open_and_check_url(driver):
 
     expected_url = "https://test.id.bund.de/de"
