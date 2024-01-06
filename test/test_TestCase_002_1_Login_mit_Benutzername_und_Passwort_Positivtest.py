@@ -1,9 +1,16 @@
+import os
 import sys
 import time
 import pytest
 
-#sys.path.append("C:/Users/renee/Desktop/PublicDocuments/7. Programming/Python-selenium-jenkins-automation")
-sys.path.append("C:\ProgramData\Jenkins\.jenkins\workspace\JenkinsPythonPytestSeleniumAllureHtmlReportToXray")
+########################################################################################################################
+# Konfig -  Notwendig damit für den import der python module
+
+aktuelles_verzeichnis = os.getcwd()
+sys.path.append(aktuelles_verzeichnis)
+
+########################################################################################################################
+
 
 from classes.InitialisiereWebdriverSetzeZoomLevel import InitialisiereWebdriverSetzeZoomLevel
 
@@ -150,10 +157,8 @@ def test_TestCase_002_1_Login_mit_Benutzername_und_Passwort_Negativtest(driver):
 
     assert aktuelles_ergebnis == bundid_test_startseite_url, f"erwartetes_ergebnis: {aktuelles_ergebnis}, aktuelles_ergebnis: {bundid_test_startseite_url}"
 
-    print("Vorbedingung erfolgreich")
 
-
-# SCHRITT 2 ###########################################################################################################
+# SCHRITT 2 ############################################################################################################
 
     bundID_startseite.anmelde_button_klick()
     time.sleep(waiting_time)
@@ -169,7 +174,8 @@ def test_TestCase_002_1_Login_mit_Benutzername_und_Passwort_Negativtest(driver):
     erwartetes_ergebnis = "https://test.id.bund.de/de/web/login/1/Benutzername"
     aktuelles_ergebnis = driver.current_url
 
-    assert aktuelles_ergebnis == erwartetes_ergebnis, f"erwartetes_ergebnis: {aktuelles_ergebnis}, aktuelles_ergebnis: {erwartetes_ergebnis}"
+    assert aktuelles_ergebnis == erwartetes_ergebnis, f"erwartetes_ergebnis: {aktuelles_ergebnis}," \
+                                                      f" aktuelles_ergebnis: {erwartetes_ergebnis}"
 
     bundID_bn_anmelden_anmeldeseite.benutzername_oder_email_adresse_send_keys(keys=benutzername)
     time.sleep(waiting_time)
@@ -186,9 +192,9 @@ def test_TestCase_002_1_Login_mit_Benutzername_und_Passwort_Negativtest(driver):
     #time.sleep(waiting_time)
 
     aktuelles_ergebnis = driver.current_url
-    assert aktuelles_ergebnis == bundid_test_postfachseite, f"erwartetes_ergebnis: {aktuelles_ergebnis}, aktuelles_ergebnis: {bundid_test_postfachseite}"
 
-    print("Schritt 2 erfolgreich")
+    assert aktuelles_ergebnis == bundid_test_postfachseite, f"erwartetes_ergebnis: {aktuelles_ergebnis}," \
+                                                            f" aktuelles_ergebnis: {bundid_test_postfachseite}"
 
 
 
