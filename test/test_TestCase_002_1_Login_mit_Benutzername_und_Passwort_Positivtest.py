@@ -3,6 +3,7 @@ import time
 import pytest
 
 #sys.path.append("C:/Users/renee/Desktop/PublicDocuments/7. Programming/Python-selenium-jenkins-automation")
+sys.path.append("C:\ProgramData\Jenkins\.jenkins\workspace\JenkinsPythonPytestSeleniumAllureHtmlReportToXray")
 
 from classes.InitialisiereWebdriverSetzeZoomLevel import InitialisiereWebdriverSetzeZoomLevel
 
