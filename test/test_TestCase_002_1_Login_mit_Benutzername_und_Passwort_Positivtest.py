@@ -1,6 +1,8 @@
 import os
 import sys
 import time
+
+import allure
 import pytest
 
 ########################################################################################################################
@@ -34,7 +36,7 @@ def driver():
 
 def test_TestCase_002_1_Login_mit_Benutzername_und_Passwort_Positivtest(driver):
 
-# Globale Variablen für die Waiting times
+# Globale Variablen ####################################################################################################
 
     waiting_time = 1
 
@@ -72,8 +74,8 @@ def test_TestCase_002_1_Login_mit_Benutzername_und_Passwort_Positivtest(driver):
     driver.get(bundid_test_startseite_url)
     aktuelles_ergebnis = driver.current_url
 
-    assert aktuelles_ergebnis == bundid_test_startseite_url, f"erwartetes_ergebnis: {aktuelles_ergebnis}, aktuelles_ergebnis: {bundid_test_startseite_url}"
-    print("Vorbedingung erfolgreich")
+    assert aktuelles_ergebnis == bundid_test_startseite_url, f"erwartetes_ergebnis: {aktuelles_ergebnis}," \
+                                                             f" aktuelles_ergebnis: {bundid_test_startseite_url}"
 
 # SCHRITT 2 ###########################################################################################################
 
@@ -91,7 +93,8 @@ def test_TestCase_002_1_Login_mit_Benutzername_und_Passwort_Positivtest(driver):
     erwartetes_ergebnis = "https://test.id.bund.de/de/web/login/1/Benutzername"
     aktuelles_ergebnis = driver.current_url
 
-    assert aktuelles_ergebnis == erwartetes_ergebnis, f"erwartetes_ergebnis: {aktuelles_ergebnis}, aktuelles_ergebnis: {erwartetes_ergebnis}"
+    assert aktuelles_ergebnis == erwartetes_ergebnis, f"erwartetes_ergebnis: {aktuelles_ergebnis}," \
+                                                      f" aktuelles_ergebnis: {erwartetes_ergebnis}"
 
     bundID_bn_anmelden_anmeldeseite.benutzername_oder_email_adresse_send_keys(keys=benutzername)
     time.sleep(waiting_time)
@@ -109,10 +112,6 @@ def test_TestCase_002_1_Login_mit_Benutzername_und_Passwort_Positivtest(driver):
 
     aktuelles_ergebnis = driver.current_url
     assert aktuelles_ergebnis == bundid_test_postfachseite, f"erwartetes_ergebnis: {aktuelles_ergebnis}, aktuelles_ergebnis: {bundid_test_postfachseite}"
-
-
-    print("Schritt 2 erfolgreich")
-
 
 
 def test_TestCase_002_1_Login_mit_Benutzername_und_Passwort_Negativtest(driver):
@@ -155,7 +154,8 @@ def test_TestCase_002_1_Login_mit_Benutzername_und_Passwort_Negativtest(driver):
     driver.get(bundid_test_startseite_url)
     aktuelles_ergebnis = driver.current_url
 
-    assert aktuelles_ergebnis == bundid_test_startseite_url, f"erwartetes_ergebnis: {aktuelles_ergebnis}, aktuelles_ergebnis: {bundid_test_startseite_url}"
+    assert aktuelles_ergebnis == bundid_test_startseite_url, f"erwartetes_ergebnis: {aktuelles_ergebnis}," \
+                                                             f" aktuelles_ergebnis: {bundid_test_startseite_url}"
 
 
 # SCHRITT 2 ############################################################################################################
@@ -174,8 +174,12 @@ def test_TestCase_002_1_Login_mit_Benutzername_und_Passwort_Negativtest(driver):
     erwartetes_ergebnis = "https://test.id.bund.de/de/web/login/1/Benutzername"
     aktuelles_ergebnis = driver.current_url
 
-    assert aktuelles_ergebnis == erwartetes_ergebnis, f"erwartetes_ergebnis: {aktuelles_ergebnis}," \
-                                                      f" aktuelles_ergebnis: {erwartetes_ergebnis}"
+    try:
+        assert aktuelles_ergebnis == erwartetes_ergebnis, f"erwartetes_ergebnis: {aktuelles_ergebnis}," \
+                                                          f" aktuelles_ergebnis: {erwartetes_ergebnis}"
+    finally:
+        if(AssertionError):
+            allure.attach(driver.get_screenshot_as_png(),name="Ungültiges Passwort", attachment_type=allure.attachment_type.PNG)
 
     bundID_bn_anmelden_anmeldeseite.benutzername_oder_email_adresse_send_keys(keys=benutzername)
     time.sleep(waiting_time)
